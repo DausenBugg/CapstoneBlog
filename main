@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capstone Project Blog</title>
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary-color: #2563eb; /* Professional Blue */
+            --secondary-color: #1e293b; /* Dark Slate */
+            --bg-color: #f8fafc; /* Light Gray Background */
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --text-light: #64748b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* --- HEADER & NAV --- */
+        header {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* --- MAIN LAYOUT --- */
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 3fr 1fr; /* Blog content takes 75%, Sidebar 25% */
+            gap: 40px;
+        }
+
+        /* --- BLOG POST STYLING --- */
+        .blog-post {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            border-left: 5px solid var(--primary-color);
+            scroll-margin-top: 100px; /* Ensures header doesn't cover title when linked */
+        }
+
+        .post-meta {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .post-title {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .post-content h3 {
+            margin-top: 1.5rem;
+            color: var(--secondary-color);
+        }
+
+        .post-content p {
+            margin-bottom: 1rem;
+        }
+
+        /* --- SIDEBAR NAVIGATION --- */
+        aside {
+            position: sticky;
+            top: 100px; /* Sticks as you scroll */
+            height: fit-content;
+        }
+
+        .sidebar-card {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar-title {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--bg-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .nav-list {
+            list-style: none;
+        }
+
+        .nav-list li {
+            margin-bottom: 0.8rem;
+        }
+
+        .nav-list a {
+            text-decoration: none;
+            color: var(--text-main);
+            transition: color 0.2s;
+            display: block;
+        }
+
+        .nav-list a:hover {
+            color: var(--primary-color);
+            padding-left: 5px; /* Slight movement effect */
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--secondary-color);
+            color: #94a3b8;
+            margin-top: 3rem;
+        }
+
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr; /* Stack into one column */
+            }
+            aside {
+                position: static; /* Remove sticky on mobile */
+                margin-bottom: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <div class="logo">Capstone Project Blog</div>
+            </div>
+    </header>
+
+    <div class="container">
+        
+        <main>
+
+            <article id="post-1" class="blog-post">
+                <div class="post-meta">
+                    <span>Posted on January 9, 2026</span> | <span>By Dausen Bugg</span>
+                </div>
+                
+                <h2 class="post-title">Welcome: My Journey & Goals</h2>
+                
+                <div class="post-content">
+                    <p><strong>Introduction</strong><br>
+                    Hello! My name is Dausen Bugg and this is the documentation for my capstone project. In this blog, I will be documenting my weekly progress, the technical hurdles I encounter, and the solutions I engineer.</p>
+                </div>
+            </article>
+
+            </main>
+
+        <aside>
+            <div class="sidebar-card">
+                <h3 class="sidebar-title">Entry Navigation</h3>
+                <ul class="nav-list">
+                    <li><a href="#post-1">Welcome: My Journey & Goals</a></li>
+                    </ul>
+            </div>
+
+            <div class="sidebar-card" style="margin-top: 20px;">
+                <h3 class="sidebar-title">About the Author</h3>
+                <p style="font-size: 0.9rem; color: var(--text-light);">
+                    <strong>[Your Name]</strong><br>
+                    Computer Science Student<br>
+                    [University Name]
+                </p>
+            </div>
+        </aside>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Capstone Project Blog. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
