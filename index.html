@@ -171,6 +171,28 @@
         
         <main>
 
+            <article id="post-6" class="blog-post">
+                <div class="post-meta">
+                    <span>Posted on February 15, 2026</span> | <span>By Dausen Bugg</span>
+                </div>
+                
+                <h2 class="post-title">Project Update: Register and Login Completed</h2>
+                
+                <div class="post-content">
+                    
+                    <p><strong>Creating a Secure Entryway</strong><br>
+                    Now that our database is connected and our code structure is ready, it is time to focus on how users will actually enter the PharmaStock system. This week, I focused on building the Register and Login API endpoints. You can think of an "endpoint" as a specific door that a user knocks on to give the app information. The registration endpoint allows new users to create an account, while the login endpoint checks their password to make sure they are who they say they are.
+                    Security is a top priority for our project because we are dealing with pharmacy data. It is essential that only authorized people can see what is happening in the inventory. By building these endpoints in the backend using our ASP.NET project, I am ensuring that the data stays safe and private. This is a big step because it moves us from a "static" project to one that can actually handle real users.</p>
+
+                    <p><strong>Planning for Next Week: Digital VIP Passes</strong><br>
+                    The work doesn't stop with just a login screen. Next week, I plan to set up something called JWT validation middleware. In simple terms, a JWT (JSON Web Token) is like a digital VIP pass. Once a user logs in, the server gives them this pass so they don't have to keep typing their password every time they click a button. The "middleware" is the security guard that checks everyone's pass before letting them into certain parts of the app.</p>
+
+                    <p><strong>Role-Based Access</strong><br>
+                    I will also be working on creating different "roles" for users, such as Admin and Staff. This is very important in a professional setting. For example, a regular staff member might be able to view the medicine inventory, but only an Admin should be allowed to delete or change important records. By restricting "admin-only" endpoints, we make sure that the most sensitive parts of PharmaStock are protected from accidental changes or unauthorized access.</p>
+                
+                </div>
+            </article>
+
             <article id="post-5" class="blog-post">
                 <div class="post-meta">
                     <span>Posted on February 8, 2026</span> | <span>By Dausen Bugg</span>
@@ -283,6 +305,7 @@
             <div class="sidebar-card">
                 <h3 class="sidebar-title">Entry Navigation</h3>
                 <ul class="nav-list">
+                    <li><a href="#post-6">Project Update: Register and Login Completed</a></li>
                     <li><a href="#post-5">Project Update: Sprint 1 Completion</a></li>
                     <li><a href="#post-4">Project Update: Moving into the Development Phase</a></li>
                     <li><a href="#post-3">Project Update: Refining The Foundation</a></li>
