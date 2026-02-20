@@ -171,6 +171,28 @@
         
         <main>
 
+            <article id="post-7" class="blog-post">
+                <div class="post-meta">
+                    <span>Posted on February 20, 2026</span> | <span>By Dausen Bugg</span>
+                </div>
+                
+                <h2 class="post-title">Project Update: Admin and Staff Roles added</h2>
+                
+                <div class="post-content">
+                    
+                    <p><strong>Role-Based Access Control and Security</strong><br>
+                    This week, I successfully transitioned our project from a simple open access model to a structured Role-Based Access Control (RBAC) system. By defining and implementing specific Admin and Staff roles within the ASP.NET identity framework, I've created a foundation where the application can finally distinguish between different levels of responsibility. This wasn't just about adding labels; it was about ensuring that the system understands the scope of each user's authority. This architectural shift is a critical milestone for PharmaStock, as it ensures that high-level administrative functions are isolated from daily operational tasks, providing the security and stability required for a professional pharmaceutical management tool.</p>
+
+                    <p><strong>Hardening Security through Endpoint Restriction</strong><br>
+                    Hardening Security through Endpoint Restriction
+With the roles established, I focused on the practical enforcement of our security policy by restricting API endpoints. I developed several Admin-only routes that are now strictly off-limits to users with Staff-level permissions. By leveraging authorization attributes and fine-tuning our JWT validation middleware, I have ensured that the API automatically intercepts and denies any unauthorized attempts to access sensitive configurations. This principle of least privilege means that while our staff can perform their essential duties efficiently, they are programmatically prevented from accessing or modifying the core administrative settings that keep the platform running. This adds a vital layer of protection against both accidental errors and intentional misuse.</p>
+
+                    <p><strong>Delivering Actionable Inventory Intelligence</strong><br>
+                    Beyond the backend security improvements, I am excited to share that I’ve implemented a new Inventory Summary API endpoint. This feature is designed to move our users away from staring at endless rows of data and toward making informed, big picture decisions. The endpoint aggregates complex inventory data into a streamlined set of statistics, offering a high-level overview of stock health and movement at a single glance. This tool provides the analytical depth necessary for effective management. This marks our first major step in turning PharmaStock from a simple database into a truly intelligent assistant for its users.</p>
+                    
+                </div>
+            </article>
+            
             <article id="post-6" class="blog-post">
                 <div class="post-meta">
                     <span>Posted on February 15, 2026</span> | <span>By Dausen Bugg</span>
@@ -305,6 +327,7 @@
             <div class="sidebar-card">
                 <h3 class="sidebar-title">Entry Navigation</h3>
                 <ul class="nav-list">
+                    <li><a href="#post-7">Project Update: Admin and Staff roles added</a></li>
                     <li><a href="#post-6">Project Update: Register and Login Completed</a></li>
                     <li><a href="#post-5">Project Update: Sprint 1 Completion</a></li>
                     <li><a href="#post-4">Project Update: Moving into the Development Phase</a></li>
