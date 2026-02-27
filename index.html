@@ -71,7 +71,7 @@
             margin-bottom: 2rem;
             box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
             border-left: 5px solid var(--primary-color);
-            scroll-margin-top: 100px; /* Ensures header doesn't cover title when linked */
+            scroll-margin-top: 100px; 
         }
 
         .post-meta {
@@ -97,10 +97,29 @@
             margin-bottom: 1rem;
         }
 
+        /* --- TABLE STYLING --- */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+        
+        th, td {
+            text-align: left;
+            padding: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        th {
+            background-color: #f1f5f9;
+            color: var(--secondary-color);
+        }
+
         /* --- SIDEBAR NAVIGATION --- */
         aside {
             position: sticky;
-            top: 100px; /* Sticks as you scroll */
+            top: 100px; 
             height: fit-content;
         }
 
@@ -135,7 +154,7 @@
 
         .nav-list a:hover {
             color: var(--primary-color);
-            padding-left: 5px; /* Slight movement effect */
+            padding-left: 5px; 
         }
 
         /* --- FOOTER --- */
@@ -147,13 +166,12 @@
             margin-top: 3rem;
         }
 
-        /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 768px) {
             .container {
-                grid-template-columns: 1fr; /* Stack into one column */
+                grid-template-columns: 1fr;
             }
             aside {
-                position: static; /* Remove sticky on mobile */
+                position: static;
                 margin-bottom: 2rem;
             }
         }
@@ -164,13 +182,61 @@
     <header>
         <div class="header-content">
             <div class="logo">Capstone Project Blog</div>
-            </div>
+        </div>
     </header>
 
     <div class="container">
         
         <main>
 
+            <article id="post-8" class="blog-post">
+                <div class="post-meta">
+                    <span>Posted on February 27, 2026</span> | <span>By Dausen Bugg</span>
+                </div>
+                
+                <h2 class="post-title">Project Update: Inventory Logic Walkthrough</h2>
+                
+                <div class="post-content">
+                    <p><strong>Improving Accuracy and Performance</strong><br>
+                    This week, my main focus was on "tightening up" the way PharmaStock tracks medication. I worked on a specific update called commit <code>fba9556</code>. The goal was to make the app better at detecting low-stock and expired items while also making the entire system run faster. I started by updating our Data Transfer Object (DTO) to include an <code>ExpiredCount</code> property. This allows the front-end to show users exactly which medications have already expired, rather than grouping them in with items that are just getting close to their date. This granular data helps pharmacists make better decisions about their inventory.</p>
+                    
+                    
+
+                    <p><strong>Cleaning Code and Boosting Speed</strong><br>
+                    I also spent time performing "digital housekeeping" on the StaffController. By cleaning up the code and removing messy file paths, the logic is now much easier for the team to read and maintain. More importantly, I updated our inventory summary endpoint to be asynchronous. This means the app can now handle large amounts of data without "freezing" or slowing down for the user. It ensures that the database can count items in the background while the rest of the application stays responsive and fast.</p>
+                        
+                    <p><strong>Standardizing Business Logic</strong><br>
+                    To ensure the whole team is on the same page, I documented our new "Inventory Status Rules" in the project README. I fixed a previous bug where the app was double-counting items that were already expired. Now, our logic is much more precise. Below is the breakdown of the thresholds I implemented this week:</p>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>Logic Threshold</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Low Stock</strong></td>
+                                <td>Quantity is less than 10 units.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Expired</strong></td>
+                                <td>Expiration date is earlier than current UTC time.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Expiring Soon</strong></td>
+                                <td>Expiration date is between today and 7 days in the future.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Total</strong></td>
+                                <td>A raw count of all active inventory items.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+            
             <article id="post-7" class="blog-post">
                 <div class="post-meta">
                     <span>Posted on February 20, 2026</span> | <span>By Dausen Bugg</span>
@@ -179,17 +245,14 @@
                 <h2 class="post-title">Project Update: Admin and Staff Roles added</h2>
                 
                 <div class="post-content">
-                    
                     <p><strong>Role-Based Access Control and Security</strong><br>
                     This week, I successfully transitioned our project from a simple open access model to a structured Role-Based Access Control system. By defining and implementing specific Admin and Staff roles within the ASP.NET identity framework, I've created a foundation where the application can finally distinguish between different levels of responsibility. This wasn't just about adding labels; it was about ensuring that the system understands the scope of each user's authority. This architectural shift is a critical milestone for PharmaStock, as it ensures that high-level administrative functions are isolated from daily operational tasks, providing the security and stability required for a professional pharmaceutical management tool.</p>
 
                     <p><strong>Hardening Security through Endpoint Restriction</strong><br>
-                    Hardening Security through Endpoint Restriction
-With the roles established, I focused on the practical enforcement of our security policy by restricting API endpoints. I developed several Admin-only routes that are now strictly off-limits to users with Staff-level permissions. By leveraging authorization attributes and fine-tuning our JWT validation middleware, I have ensured that the API automatically intercepts and denies any unauthorized attempts to access sensitive configurations. This principle of least privilege means that while our staff can perform their essential duties efficiently, they are programmatically prevented from accessing or modifying the core administrative settings that keep the platform running. This adds a vital layer of protection against both accidental errors and intentional misuse.</p>
+                    With the roles established, I focused on the practical enforcement of our security policy by restricting API endpoints. I developed several Admin-only routes that are now strictly off-limits to users with Staff-level permissions. By leveraging authorization attributes and fine-tuning our JWT validation middleware, I have ensured that the API automatically intercepts and denies any unauthorized attempts to access sensitive configurations. This principle of least privilege means that while our staff can perform their essential duties efficiently, they are programmatically prevented from accessing or modifying the core administrative settings that keep the platform running. This adds a vital layer of protection against both accidental errors and intentional misuse.</p>
 
                     <p><strong>Delivering Actionable Inventory Intelligence</strong><br>
                     Beyond the backend security improvements, I am excited to share that I’ve implemented a new Inventory Summary API endpoint. This feature is designed to move our users away from staring at endless rows of data and toward making informed, big picture decisions. The endpoint aggregates complex inventory data into a streamlined set of statistics, offering a high-level overview of stock health and movement at a single glance. This tool provides the analytical depth necessary for effective management. This marks our first major step in turning PharmaStock from a simple database into a truly intelligent assistant for its users.</p>
-                    
                 </div>
             </article>
             
@@ -201,7 +264,6 @@ With the roles established, I focused on the practical enforcement of our securi
                 <h2 class="post-title">Project Update: Register and Login Completed</h2>
                 
                 <div class="post-content">
-                    
                     <p><strong>Creating a Secure Entryway</strong><br>
                     Now that our database is connected and our code structure is ready, it is time to focus on how users will actually enter the PharmaStock system. This week, I focused on building the Register and Login API endpoints. You can think of an "endpoint" as a specific door that a user knocks on to give the app information. The registration endpoint allows new users to create an account, while the login endpoint checks their password to make sure they are who they say they are.
                     Security is a top priority for our project because we are dealing with pharmacy data. It is essential that only authorized people can see what is happening in the inventory. By building these endpoints in the backend using our ASP.NET project, I am ensuring that the data stays safe and private. This is a big step because it moves us from a "static" project to one that can actually handle real users.</p>
@@ -211,7 +273,6 @@ With the roles established, I focused on the practical enforcement of our securi
 
                     <p><strong>Role-Based Access</strong><br>
                     I will also be working on creating different "roles" for users, such as Admin and Staff. This is very important in a professional setting. For example, a regular staff member might be able to view the medicine inventory, but only an Admin should be allowed to delete or change important records. By restricting "admin-only" endpoints, we make sure that the most sensitive parts of PharmaStock are protected from accidental changes or unauthorized access.</p>
-                
                 </div>
             </article>
 
@@ -234,7 +295,6 @@ With the roles established, I focused on the practical enforcement of our securi
 
                     <p><strong>Looking Ahead</strong><br>
                     Next week, we will finally begin implementing user features! This includes building the registration and login pages so users can create accounts. We will also be setting up more specific tables in our database to store all the pharmaceutical data we need.</p>
-                    
                 </div>
             </article>
 
@@ -257,7 +317,6 @@ With the roles established, I focused on the practical enforcement of our securi
 
                     <p><strong>Conclusion</strong><br>
                     We have made a lot of progress this week by combining strong organization with technical setup. Between the Jira board, the wireframes, and the new API project, the foundation for PharmaStock is stronger than ever. I am looking forward to seeing how these pieces come together in the coming weeks.</p>
-                    
                 </div>
             </article>
             
@@ -270,17 +329,16 @@ With the roles established, I focused on the practical enforcement of our securi
                 
                 <div class="post-content">
                     <p><strong>Team Collaboration and Strategy</strong><br>
-                   This week was very productive for the PharmaStock team. We held a meeting to discuss our individual tasks and make sure everyone was moving in the right direction. During this meeting, we talked about what we wanted to accomplish by the end of the week. It is important to stay organized so that no part of the project is forgotten. By checking in with each other, we made sure that our team is working as a single unit rather than separate parts.</p>
+                    This week was very productive for the PharmaStock team. We held a meeting to discuss our individual tasks and make sure everyone was moving in the right direction. During this meeting, we talked about what we wanted to accomplish by the end of the week. It is important to stay organized so that no part of the project is forgotten. By checking in with each other, we made sure that our team is working as a single unit rather than separate parts.</p>
                 
                     <p><strong>Improving the Software Design Document</strong><br>
-                    My main responsibility this week was to finish the <span class="highlight">Software Design Document (SDD)</span>. To do this correctly, I carefully reviewed the feedback we received from our teacher. Taking advice from experts is a key part of the design process because it helps us find mistakes before they become big problems. I used those suggestions to update our plan and make it even stronger. The SDD is now complete, and it explains exactly how the code and the data for PharmaStock will work together.</p>
+                    My main responsibility this week was to finish the Software Design Document (SDD). To do this correctly, I carefully reviewed the feedback we received from our teacher. Taking advice from experts is a key part of the design process because it helps us find mistakes before they become big problems. I used those suggestions to update our plan and make it even stronger. The SDD is now complete, and it explains exactly how the code and the data for PharmaStock will work together.</p>
                 
                     <p><strong>Setting the Foundation</strong><br>
                     With the design document finished, we are now one step closer to setting the foundation for the entire project. In software development, the foundation is the most important part. If the plan is weak, the software will not work well. However, because we took the time to listen to feedback and organize our thoughts, I feel very confident in our progress. We are building a professional tool that will help pharmacies manage their medicine stock more efficiently, and our roadmap is now very clear.</p>
 
                     <p><strong>Looking Ahead</strong><br>
                     Now that the planning phase is wrapping up, I am excited to see how our ideas turn into real code. This week proved that communication and a willingness to improve are the keys to success. I look forward to sharing more updates as we move into the next phase of development.</p>
-                    
                 </div>
             </article>
 
@@ -293,7 +351,7 @@ With the roles established, I focused on the practical enforcement of our securi
                 
                 <div class="post-content">
                     <p><strong>Getting Started</strong><br>
-                   This week marks the official start of my work on the PharmaStock project. The most important event of the week was our first team meeting. My teammates and I met up to get to know each other and begin our collaboration. It was a great opportunity to get acquainted and discuss how we will work together over the next few months. We are all excited to begin this process and have started to build a strong working relationship.</p>
+                    This week marks the official start of my work on the PharmaStock project. The most important event of the week was our first team meeting. My teammates and I met up to get to know each other and begin our collaboration. It was a great opportunity to get acquainted and discuss how we will work together over the next few months. We are all excited to begin this process and have started to build a strong working relationship.</p>
                 
                     <p><strong>Software Design and Documentation</strong><br>
                     A major part of my week was spent helping to create our Software Design Document (SDD). This document is a critical piece of the project because it serves as a roadmap for everything we build. It explains how the software will be structured and how different parts of the application will communicate with each other. By completing this document now, we have a clear guide that will help us avoid mistakes and stay organized as the project becomes more complex.</p>
@@ -304,7 +362,6 @@ With the roles established, I focused on the practical enforcement of our securi
                     <p><strong>Project Style Tile</strong><br>
                     Below is the Style Tile we created to define the look and feel of our application:
                     <a href="PharmaStock - UX Tile Frame (1).pdf">Click here to download the PDF.</a></p>
-                    </p>
                 </div>
             </article>
             
@@ -321,12 +378,13 @@ With the roles established, I focused on the practical enforcement of our securi
                 </div>
             </article>
 
-            </main>
+        </main>
 
         <aside>
             <div class="sidebar-card">
                 <h3 class="sidebar-title">Entry Navigation</h3>
                 <ul class="nav-list">
+                    <li><a href="#post-8">Project Update: Inventory Logic Walkthrough</a></li>
                     <li><a href="#post-7">Project Update: Admin and Staff roles added</a></li>
                     <li><a href="#post-6">Project Update: Register and Login Completed</a></li>
                     <li><a href="#post-5">Project Update: Sprint 1 Completion</a></li>
@@ -334,7 +392,7 @@ With the roles established, I focused on the practical enforcement of our securi
                     <li><a href="#post-3">Project Update: Refining The Foundation</a></li>
                     <li><a href="#post-2">Project Update: Meeting The Team</a></li>
                     <li><a href="#post-1">Welcome: My Journey & Goals</a></li>
-                    </ul>
+                </ul>
             </div>
 
             <div class="sidebar-card" style="margin-top: 20px;">
