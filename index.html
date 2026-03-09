@@ -209,6 +209,36 @@
         
         <main>
 
+            <article id="post-9" class="blog-post">
+                <div class="post-meta">
+                    <span>Posted on March 8th, 2026</span> | <span>By Dausen Bugg</span>
+                </div>
+                
+                <h2 class="post-title">Project Update: Bringing Inventory to Life with Real Data</h2>
+                
+                <div class="post-content">
+                    <p>This week marked a massive milestone for our project. The main goal was to stop pretending and make our inventory feature actually run on live data instead of static test data. I’m happy to report that we successfully moved the entire inventory system from a hardcoded mockup to a fully tested, API-driven workflow end-to-end. This means the numbers and medications you see now are the real deal, pulled directly from the backend database.<br>
+                    </p>
+                    
+                    <p><em>Check out this quick video walkthrough of the new features in action:</em></p>
+                    <div class="video-wrapper" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000; margin: 20px 0; border-radius: 8px;">
+                        <iframe 
+                            src="https://www.youtube.com/embed/watch?v=y8ziQE1zDQc" 
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    
+                    <p>Getting here required a lot of heavy lifting under the hood, starting with the backend. I added a new API endpoint to fetch all inventory stocks upon page load and fixed the specific route used for adjusting quantities to ensure it targets the correct ID. To make sure the data was clean, I ran database migrations to wipe out legacy test tables and seed real medication records. I also created a new response model with mapping logic to include crucial medication details like name, strength, NDC, lot number, and expiration dates, ensuring the API returns sorted, production-ready data.<br>
+                    </p>
+                    
+                    <p>Once the backend foundation was solid, I focused on wiring up the frontend. I integrated the Angular HttpClient to load this live data immediately on component startup, officially replacing the old hardcoded table rows. I then built a fully working search and filter form. Users can now search by medication name or lot number, or use a quick filter to show only items expiring in the next seven days. To tie it all together, I expanded our unit tests to cover API loading and all filtering behaviors to ensure stability moving forward.<br>
+                    </p>
+                    
+                </div>
+            </article>
+
             <article id="post-8" class="blog-post">
                 <div class="post-meta">
                     <span>Posted on February 27, 2026</span> | <span>By Dausen Bugg</span>
@@ -409,6 +439,7 @@
             <div class="sidebar-card">
                 <h3 class="sidebar-title">Entry Navigation</h3>
                 <ul class="nav-list">
+                    <li><a href="#post-9">Project Update: Bringing Inventory to Life with Real Data</a></li>
                     <li><a href="#post-8">Project Update: Inventory Logic Walkthrough</a></li>
                     <li><a href="#post-7">Project Update: Admin and Staff roles added</a></li>
                     <li><a href="#post-6">Project Update: Register and Login Completed</a></li>
