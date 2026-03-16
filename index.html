@@ -209,6 +209,29 @@
         
         <main>
 
+            <article id="post-10" class="blog-post">
+                <div class="post-meta">
+                    <span>Posted on March 15th, 2026</span> | <span>By Dausen Bugg</span>
+                </div>
+                
+                <h2 class="post-title">Project Update: Launching the AI Brain of PharmaStock</h2>
+                
+                <div class="post-content">
+                    <p><strong>The Challenge of Smart Inventory</strong><br>
+                    This week, I focused on adding the most advanced feature to PharmaStock yet: Artificial Intelligence. The main problem we wanted to solve is that pharmacists often have to guess when to order more medicine or worry about which bottles might expire soon. This can lead to wasted money or, even worse, not having enough medicine for patients. To solve this, I developed two separate AI models that act as the brain of our application, providing smart predictions that help human workers make better choices.</p>
+                    
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/watch?v=IG7WR15IKts" title="Weekly Progress Video" allowfullscreen></iframe>
+                    </div>
+
+                    <p><strong>Predicting the Future of Stock</strong><br>
+                    The first model I created is a <strong>Random Forest Regressor</strong>. This tool is designed to predict reordering numbers. By looking at how popular a certain medication is and comparing it to other historical factors, the AI gives the user a specific number. This number tells the pharmacist exactly when they should restock a particular medical lot. The second model is a <strong>Gradient Boosting Classifier</strong>. This model is focused on safety and waste prevention. It analyzes the inventory to tell us the "expiration risk" of each item based on current trends and dates.</p>
+
+                    <p><strong>Training with Large-Scale Data</strong><br>
+                    To make these models smart, they needed to study a lot of examples. I created a massive set of dummy data consisting of 1,652 rows to train the AI. Right now, the models are performing incredibly well, with an accuracy score of 0.999999. While this high score is partly because the training data is very clean, it shows that the foundation of the AI is solid. As soon as we start feeding real-world data from our database into these models, they will become even more helpful and accurate. My next plan is to tune these models further and fully implement them into the user dashboard so the predictions are visible to everyone.</p>
+                </div>
+            </article>
+            
             <article id="post-9" class="blog-post">
                 <div class="post-meta">
                     <span>Posted on March 8th, 2026</span> | <span>By Dausen Bugg</span>
