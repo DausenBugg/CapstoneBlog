@@ -209,6 +209,32 @@
         
         <main>
 
+            <article id="post-11" class="blog-post">
+                <div class="post-meta">
+                    <span>Posted on March 20th, 2026</span> | <span>By Dausen Bugg</span>
+                </div>
+                
+                <h2 class="post-title">Project Update: Moving from Memorization to Real Learning</h2>
+                
+                <div class="post-content">
+                    <p><strong>The Problem with Perfect AI</strong><br>
+                    This week on PharmaStock, I spent a lot of time improving our Artificial Intelligence service. Previously, my AI models were getting perfect scores on their tests. While that might sound good, in the world of computer science, a perfect score often means the AI is cheating by finding shortcuts or simply memorizing the answers. This is called feature leakage. It’s like a student who finds the answer key on the back of a test instead of actually learning the subject. I realized that our models were memorizing math formulas instead of learning real patterns about pharmacy data.</p>
+                    
+                    <p><strong>Fixing the "Cheating" Models</strong><br>
+                    To fix this, I completely overhauled our system. I removed the shortcuts the AI was using and replaced them with more meaningful information. I also added some noise or messiness to our training data. By doing this, I forced the AI to work harder to find the truth, which makes it much smarter in the long run. I also introduced a process called 5-fold cross-validation. This means the AI has to take five different versions of the test to prove it truly understands the material. I also added automated tuning to help the models find their best settings without me having to do it manually.</p>
+
+                    <p><strong>Weekly Progress Video Walkthrough</strong><br>
+                    In the video below, I explain the technical steps I took to fix these models and show how the new results are much more realistic and reliable:</p>
+
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/wmnKDjKY3Tc" title="Weekly Progress Video" allowfullscreen></iframe>
+                    </div>
+
+                    <p><strong>The Results: Ready for the Real World</strong><br>
+                    The results are very exciting! The accuracy scores for our reordering model moved from an impossible 0.9999 down to a realistic 0.9841. This is actually a victory because it means the model is now genuinely learning how to predict medicine stock levels. Our expiration model also moved to a more honest and reliable score. These changes were all made deep inside our Python service, so they didn't break our connections to the frontend or backend. PharmaStock is now properly validated and ready to handle real pharmacy data when it becomes available!</p>
+                </div>
+            </article>
+            
             <article id="post-10" class="blog-post">
                 <div class="post-meta">
                     <span>Posted on March 15th, 2026</span> | <span>By Dausen Bugg</span>
@@ -466,6 +492,7 @@
             <div class="sidebar-card">
                 <h3 class="sidebar-title">Entry Navigation</h3>
                 <ul class="nav-list">
+                    <li><a href="#post-11">Project Update: Real AI Learning</a></li>
                     <li><a href="#post-10">Project Update: Launching the AI Brain</a></li>
                     <li><a href="#post-9">Project Update: Bringing Inventory to Life with Real Data</a></li>
                     <li><a href="#post-8">Project Update: Inventory Logic Walkthrough</a></li>
