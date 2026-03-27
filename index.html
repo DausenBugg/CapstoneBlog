@@ -209,6 +209,32 @@
         
         <main>
 
+            <article id="post-12" class="blog-post">
+                <div class="post-meta">
+                    <span>Posted on March 27th, 2026</span> | <span>By Dausen Bugg</span>
+                </div>
+                
+                <h2 class="post-title">Project Update: Bringing AI Predictions to the Dashboard</h2>
+                
+                <div class="post-content">
+                    <p><strong>Two Types of Alerts</strong><br>
+                    This week on PharmaStock, I focused on making our AI predictions visible where they matter most: the main dashboard. Up until now, our dashboard had basic alerts that worked like simple alarm bells. If a medication's stock dropped below a fixed number, it showed up as Low Inventory. That's useful, but it treats every medication the same way regardless of how fast it's actually being used. Today, I added AI-powered reorder alerts that sit right alongside those basic alerts, giving pharmacists a smarter layer of intelligence.</p>
+                    
+                    <p><strong>How the AI Alerts Work</strong><br>
+                    Our AI reorder alerts are powered by machine learning models trained on usage history, medication types, lot counts, and expiration timelines. Instead of using a fixed threshold, the model analyzes 21 different features about each medication and predicts a custom reorder level. It also provides a confidence score so pharmacists know how certain the prediction is. Medications are tagged as Popular or Slow based on demand, making it easy to prioritize. The whole pipeline flows from our Angular frontend through the C# backend to a Python AI service running trained Random Forest and Gradient Boosting models.</p>
+            
+                    <p><strong>Making AI Stand Out</strong><br>
+                    One important design decision was making the AI alerts look different from the basic ones. If everything looks the same, users can't tell which insights come from simple rules and which come from machine learning. I added a blue accent border and an AI indicator to the prediction cards, separating them from the orange and red health-status colors used for basic alerts. There's also a clear AI-Powered Insights section header so the distinction is obvious at a glance. The alerts auto-refresh every 60 seconds, and if the AI service ever goes down, the dashboard gracefully shows AI service unavailable instead of crashing.</p>
+            
+                    <p><strong>Why This Matters</strong><br>
+                    This update bridges the gap between our trained AI models and the people who actually need to make decisions. A model sitting in the background is only useful if its predictions reach the right screen at the right time. By surfacing these alerts on the dashboard with clear visual branding, pharmacists can trust and act on AI recommendations while still seeing the basic checks they're already familiar with. PharmaStock now has two layers of inventory intelligence working together, and the foundation is set for even more AI-driven features going forward.</p>
+
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/watch?v=4P8Ou1FCK50" title="Weekly Progress Video" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </article>
+
             <article id="post-11" class="blog-post">
                 <div class="post-meta">
                     <span>Posted on March 20th, 2026</span> | <span>By Dausen Bugg</span>
@@ -492,6 +518,7 @@
             <div class="sidebar-card">
                 <h3 class="sidebar-title">Entry Navigation</h3>
                 <ul class="nav-list">
+                    <li><a href="#post-12">Project Update: Bringing AI Predictions to the Dashboard</a></li>
                     <li><a href="#post-11">Project Update: Real AI Learning</a></li>
                     <li><a href="#post-10">Project Update: Launching the AI Brain</a></li>
                     <li><a href="#post-9">Project Update: Bringing Inventory to Life with Real Data</a></li>
