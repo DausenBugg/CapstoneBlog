@@ -210,6 +210,34 @@
         <main>
 
             <article id="post-12" class="blog-post">
+                
+                <div class="post-meta">
+                    <span>Posted on April 10th, 2026</span> | <span>By Dausen Bugg</span>
+                </div>
+                
+                <h2 class="post-title">Project Update: Adding Email Notifications for Urgent Inventory Alerts</h2>
+                
+                <div class="post-content">
+                    <p><strong>Sending Alerts Beyond the Dashboard</strong><br>
+                    This week on PharmaStock, I expanded our alert system beyond the dashboard by adding email notifications for urgent inventory issues. Until now, reorder and expiration risks could be viewed inside the application, but staff still needed to log in and check the system manually. With this update, administrators can now trigger an email alert that summarizes the most urgent inventory problems and sends them directly to admin users with registered email addresses.</p>
+                    
+                    <p><strong>How the Notification Service Works</strong><br>
+                    The new email notification service pulls both AI-powered reorder alerts and expiration risk alerts from our prediction service, combines them into a single report, and formats the results into a clean HTML email. Medication names are resolved from database records so the message is readable and useful, rather than just listing internal IDs. The email includes key details like recommended reorder levels, confidence scores, risk labels, and days until expiration, giving administrators a quick snapshot of what needs attention.</p>
+            
+                    <p><strong>Backend Integration and Delivery</strong><br>
+                    To support this feature, I added a dedicated email notification service, registered it in dependency injection, and exposed a new admin-only endpoint for sending inventory alerts. I also integrated MailKit for SMTP delivery and added configurable SMTP settings to the application configuration. That means the system can now connect to a mail server, authenticate if needed, and send alert emails from a custom PharmaStock sender address. If the AI prediction service is unavailable, the endpoint returns a clear service-unavailable response instead of failing silently.</p>
+            
+                    <p><strong>Why This Matters</strong><br>
+                    This update makes PharmaStock more proactive. Instead of waiting for someone to open the app and review alerts, the system can now push critical inventory information directly to the people responsible for acting on it. That improves response time for low-stock and expiration issues and brings our AI insights closer to real operational workflows. It is a strong step toward making PharmaStock not just informative, but actively assistive in day-to-day pharmacy management.</p>
+                
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/RRBDabwga_I" title="Weekly Progress Video" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+            </article>
+            
+            <article id="post-12" class="blog-post">
                 <div class="post-meta">
                     <span>Posted on March 27th, 2026</span> | <span>By Dausen Bugg</span>
                 </div>
@@ -518,6 +546,7 @@
             <div class="sidebar-card">
                 <h3 class="sidebar-title">Entry Navigation</h3>
                 <ul class="nav-list">
+                    <li><a href="#post-13">Project Update: Adding Email Notifications for Urgent Inventory Alerts</a></li>
                     <li><a href="#post-12">Project Update: Bringing AI Predictions to the Dashboard</a></li>
                     <li><a href="#post-11">Project Update: Real AI Learning</a></li>
                     <li><a href="#post-10">Project Update: Launching the AI Brain</a></li>
