@@ -209,7 +209,35 @@
         
         <main>
 
-            <article id="post-12" class="blog-post">
+            <article id="post-14" class="blog-post">
+                
+                <div class="post-meta">
+                    <span>Posted on April 17th, 2026</span> | <span>By Dausen Bugg</span>
+                </div>
+                
+                <h2 class="post-title">Project Update: Adding Configurable Notification Thresholds</h2>
+                
+                <div class="post-content">
+                    <p><strong>Making Alert Thresholds Configurable</strong><br>
+                    This week on PharmaStock, I added support for configurable notification thresholds so alert behavior is no longer locked into hardcoded values. Before this update, expiration warning days, low-stock sensitivity, and risk score cutoffs were fixed in code. With this change, administrators can now manage those thresholds directly through the application, making it easier to adjust how aggressive or strict alerts should be without needing a code change.</p>
+                    
+                    <p><strong>Database-Backed Settings and Admin API</strong><br>
+                    To support this feature, I added a new notification settings model and migration so the threshold values persist in the database. I also created a dedicated service and an admin-only API endpoint for retrieving and updating the settings. This keeps the implementation simple and isolated while making sure threshold changes are stored safely and can be reused across the rest of the system.</p>
+            
+                    <p><strong>Frontend Settings Integration</strong><br>
+                    On the frontend, I added a new Alert Thresholds section to the Settings page for admin users. That interface allows admins to update values like expiration warning days, low stock buffer percentage, minimum risk score filtering, and risk score thresholds for warning and critical alerts. The goal was to keep the UI straightforward while making threshold management accessible without touching configuration files or backend code manually.</p>
+            
+                    <p><strong>Immediate Impact on Alert Behavior</strong><br>
+                    I also updated the dashboard and prediction-related alert logic so these saved thresholds take effect immediately. That means when an admin changes the configuration, the application begins using the new values right away for things like expiration risk display and low-stock alert sensitivity. This makes PharmaStock more flexible in real workflows, because teams can tune alert behavior based on how they actually want inventory issues surfaced.</p>
+                
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/cSsjEF5jZ4E" title="Weekly Progress Video" allowfullscreen></iframe>
+                    </div>
+                </div>
+                
+            </article>
+            
+            <article id="post-13" class="blog-post">
                 
                 <div class="post-meta">
                     <span>Posted on April 10th, 2026</span> | <span>By Dausen Bugg</span>
@@ -546,6 +574,7 @@
             <div class="sidebar-card">
                 <h3 class="sidebar-title">Entry Navigation</h3>
                 <ul class="nav-list">
+                    <li><a href="#post-14">Project Update: Adding Configurable Notification Thresholds</a></li>
                     <li><a href="#post-13">Project Update: Adding Email Notifications for Urgent Inventory Alerts</a></li>
                     <li><a href="#post-12">Project Update: Bringing AI Predictions to the Dashboard</a></li>
                     <li><a href="#post-11">Project Update: Real AI Learning</a></li>
