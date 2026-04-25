@@ -209,6 +209,34 @@
         
         <main>
 
+            <article id="post-15" class="blog-post">
+                
+                <div class="post-meta">
+                    <span>Posted on April 24th, 2026</span> | <span>By Dausen Bugg</span>
+                </div>
+                
+                <h2 class="post-title">Project Update: Adjustment Audit Trail & Orders Page Fix</h2>
+                
+                <div class="post-content">
+                    <p><strong>Fixing a Silent Bug in the Orders Page</strong><br>
+                    This week I tracked down and fixed a bug in PharmaStock's dispensing workflow that had been there since the Orders page was built. When a pharmacist finalized a quantity adjustment, the UI updated correctly — but nothing was ever sent to the backend. The dispense appeared to work, then silently reverted on the next page refresh. The fix was straightforward once identified: the confirmation handler now calls the actual API adjustment endpoint before updating the display, and shows an error alert if the save fails instead of silently succeeding.</p>
+                    
+                    <p><strong>Surfacing the Usage History the Database was Already Capturing</strong><br>
+                    The backend already recorded a UsageHistory row on every quantity change — but there was no API endpoint to read that data. I added a new <code>GET /api/usagehistory</code> endpoint that returns the most recent adjustment records ordered by time, joining inventory and medication tables to resolve human-readable names and lot numbers. The query respects medication name overrides the same way the rest of the inventory system does, and a configurable <code>take</code> parameter keeps response sizes reasonable.</p>
+            
+                    <p><strong>Angular Service and Model</strong><br>
+                    On the frontend, I added a typed TypeScript interface to mirror the new response shape and a dedicated Angular service that wraps the endpoint. The pattern is identical to the existing PredictionService and NotificationSettingService, so it fits naturally into the codebase without introducing new conventions.</p>
+                
+                    <p><strong>Recent Adjustments Card on the Dashboard</strong><br>
+                    Finally, I wired the new service into the dashboard so the five most recent dispensed and restocked events appear in a dedicated card below the AI insights section. The card refreshes on the same 60-second cycle as the rest of the dashboard. Each row shows a color-coded Dispensed or Restocked badge, the medication name, lot number, quantity changed, and timestamp. It's a small addition but it turns the dashboard from a read-only snapshot into something that reflects what's actually happening on the floor in near real-time.</p>
+                
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/V01f1k7vntM" title="Weekly Progress Video" allowfullscreen></iframe>
+                    </div>
+                </div>
+    
+            </article>
+            
             <article id="post-14" class="blog-post">
                 
                 <div class="post-meta">
@@ -574,6 +602,7 @@
             <div class="sidebar-card">
                 <h3 class="sidebar-title">Entry Navigation</h3>
                 <ul class="nav-list">
+                    <li><a href="#post-15">Project Update: Adjustment Audit Trail & Orders Page Fix</a></li>
                     <li><a href="#post-14">Project Update: Adding Configurable Notification Thresholds</a></li>
                     <li><a href="#post-13">Project Update: Adding Email Notifications for Urgent Inventory Alerts</a></li>
                     <li><a href="#post-12">Project Update: Bringing AI Predictions to the Dashboard</a></li>
