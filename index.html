@@ -209,6 +209,34 @@
         
         <main>
 
+            <article id="post-16" class="blog-post">
+                
+                <div class="post-meta">
+                    <span>Posted on May 1st, 2026</span> | <span>By Dausen Bugg</span>
+                </div>
+                
+                <h2 class="post-title">Project Update: Reports Page Completeness & Filter Clarity</h2>
+                
+                <div class="post-content">
+                    <p><strong>Fixing an Incomplete Reports Page</strong><br>
+                    This week I tracked down a reporting issue in PharmaStock that could quietly undermine trust in the data. The Reports page looked like a full inventory report, but it only loaded the first paginated slice of inventory from the API. That meant larger inventories could be partially displayed and partially exported without the user realizing anything was missing. I fixed the problem by updating the frontend to request every page of inventory data and combine the results before rendering the report.</p>
+                    
+                    <p><strong>Correcting Filters That Broke on Blank Expiration Dates</strong><br>
+                    While reviewing the page logic, I found a second issue in the filter behavior. Records without expiration dates were returning early in the filter pipeline, which meant Stocked Out and Low Inventory filters could behave incorrectly for those rows. The updated logic now evaluates stock conditions independently from expiration status, so users get accurate results whether or not an expiration value is present.</p>
+            
+                    <p><strong>Making the Report Easier to Trust at a Glance</strong><br>
+                    I also improved the experience around the report itself. The page now shows summary cards for visible records, expired items, expiring-soon items, stocked-out items, and low-inventory items. Search coverage was expanded beyond medication names to include lot number, NDC, package NDC, and bin location. I also added clearer loading, error, and empty-result states so the page explains what is happening instead of leaving the user guessing.</p>
+                
+                    <p><strong>Adding Guardrails for Future Changes</strong><br>
+                    To make the fix more durable, I added focused frontend specs around the all-pages loading behavior, the corrected stocked-out filtering path, and the expanded report search fields. It is a medium-sized quality-of-life improvement, but it closes a real reporting trust gap and makes the Reports page feel much more reliable for day-to-day pharmacy operations.</p>
+                
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/sznJWQaC84s" title="Weekly Progress Video" allowfullscreen></iframe>
+                    </div>
+                </div>
+            
+            </article>
+
             <article id="post-15" class="blog-post">
                 
                 <div class="post-meta">
