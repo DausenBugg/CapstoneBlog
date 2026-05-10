@@ -209,6 +209,34 @@
         
         <main>
 
+            <article id="post-17" class="blog-post">
+                
+                <div class="post-meta">
+                    <span>Posted on May 10th, 2026</span> | <span>By Dausen Bugg</span>
+                </div>
+                
+                <h2 class="post-title">Project Update: Backend Performance Optimization Pass</h2>
+                
+                <div class="post-content">
+                    <p><strong>Improving Inventory Search Without Changing Behavior</strong><br>
+                    This week I focused on a low-risk backend optimization pass in PharmaStock. The first improvement was in the inventory listing query. Search filters were using lowercase string transformations directly against database columns before applying matching logic. That works, but it can make those queries more expensive than necessary. I updated the inventory search path to use EF Core's <code>Like</code>-based filtering instead, which keeps the same search behavior while producing a more efficient query shape for the database.</p>
+                    
+                    <p><strong>Removing Repeated Work from Reorder Alert Generation</strong><br>
+                    I also optimized the reorder alert flow in the AI integration layer. The API was fetching notification settings repeatedly inside the loop that processed each prediction result. Since those settings do not change during the lifetime of a single request, that extra lookup was unnecessary. The service now fetches the settings once, calculates the threshold multiplier once, and reuses those values for the rest of the request. It is a small change, but it removes redundant work from a path that can run often.</p>
+                    
+                    <p><strong>Cleaning Up Logging in the Python AI Service</strong><br>
+                    On the Python side, I replaced a number of print-based logs in the prediction service and FastAPI entrypoint with structured logger calls. The original logging worked for debugging, but it added synchronous console I/O on hot request paths. The updated approach keeps the same observability while making the service better behaved for production-style workloads. Debug messages now stay at debug level, warnings remain visible, and unexpected failures still log with stack traces.</p>
+                
+                    <p><strong>Validation and Outcome</strong><br>
+                    After the changes, I validated both backend stacks. The .NET solution built successfully, and the AI service passed Python syntax compilation checks. Most importantly, this optimization pass did not change API contracts or business rules. The goal here was not to redesign anything dramatic, but to make the backend a little leaner in a way that is safe, reversible, and easy to build on in future performance work.</p>
+                
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/2yveJCx9AI0" title="Weekly Progress Video" allowfullscreen></iframe>
+                    </div>
+                </div>
+    
+            </article>
+
             <article id="post-16" class="blog-post">
                 
                 <div class="post-meta">
@@ -630,6 +658,7 @@
             <div class="sidebar-card">
                 <h3 class="sidebar-title">Entry Navigation</h3>
                 <ul class="nav-list">
+                    <li><a href="#post-17">Project Update: Backend Performance Optimization Pass</a></li>
                     <li><a href="#post-16">Project Update: Reports Page Completeness & Filter Clarity</a></li>
                     <li><a href="#post-15">Project Update: Adjustment Audit Trail & Orders Page Fix</a></li>
                     <li><a href="#post-14">Project Update: Adding Configurable Notification Thresholds</a></li>
