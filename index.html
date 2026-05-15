@@ -209,6 +209,31 @@
         
         <main>
 
+            <article id="post-18" class="blog-post">    
+            
+                <div class="post-meta">
+                    <span>Posted on May 15th, 2026</span> | <span>By Dausen Bugg</span>
+                </div>
+                
+                <h2 class="post-title">Project Update: Backend Query Efficiency Optimization Pass</h2>
+                
+                <div class="post-content">
+                    <p><strong>Consolidating Inventory Summary Queries</strong><br>
+                    This week I focused on another low-risk backend optimization pass in PharmaStock. The inventory in-stock listing path was computing summary values through several separate count queries. I refactored that flow to calculate total items, expired, expiring soon, stocked out, and low inventory values through one aggregate query while keeping the same filtering behavior and response shape.</p>
+                    
+                    <p><strong>Removing N+1 Lookups in Admin User Listing</strong><br>
+                    I also optimized the admin users endpoint by removing repeated profile lookups executed once per user. The endpoint now loads profile records in one batched query, builds an in-memory lookup, and reuses that map while assembling each user response. This keeps endpoint behavior unchanged, but removes unnecessary database round trips as the number of users increases.</p>
+                    
+                    <p><strong>Validation and Outcome</strong><br>
+                    After these changes, I validated the backend build and confirmed there were no new compile errors introduced by this optimization pass. Most importantly, API contracts and business rules were not changed. The goal was to make query-heavy backend paths leaner in a safe, incremental way that is easy to maintain and build on later.</p>
+                
+                    <div class="video-container">
+                        <iframe src="https://www.youtube.com/embed/mmL969g0xzY" title="Weekly Progress Video" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+            </article>
+            
             <article id="post-17" class="blog-post">
                 
                 <div class="post-meta">
@@ -658,6 +683,7 @@
             <div class="sidebar-card">
                 <h3 class="sidebar-title">Entry Navigation</h3>
                 <ul class="nav-list">
+                    <li><a href="#post-18">Project Update: Backend Query Efficiency Optimization Pass</a></li>
                     <li><a href="#post-17">Project Update: Backend Performance Optimization Pass</a></li>
                     <li><a href="#post-16">Project Update: Reports Page Completeness & Filter Clarity</a></li>
                     <li><a href="#post-15">Project Update: Adjustment Audit Trail & Orders Page Fix</a></li>
